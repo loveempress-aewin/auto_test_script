@@ -1,8 +1,8 @@
 #!/bin/bash
 
-####date : Mon Nov 24 11:28:48 CST 2025
+####date : Wed Dec 10 15:22:48 CST 2025
 ####author : lovequeen
-#### goal : loop look all bypass (because need input always ==)
+#### goal :
 
 love_rule=$#
 let love_min=0;
@@ -33,10 +33,10 @@ read -p "[4/${love_mylover}] plz input which set(ee ed dd) : " love_control
 
 
 for (( i=${love_min}; i<=${love_max};i++ ));do
-    echo "${love_exe} -${love_control} ${love_port} ${i} -nu";
-    ${love_exe} -${love_control} ${love_port} ${i} -nu;
+    echo "${love_exe} -${love_control} ${love_port} ${i} -u";
+    ${love_exe} -${love_control} ${love_port} ${i} -u;
+    for (( x=${love_min}; x<=${love_max};x++ ));do
+        ${love_exe} -rt ${love_port} ${x};
+    done
 done
 
-for (( i=${love_min}; i<=${love_max};i++ ));do
-    ${love_exe} -r ${love_port} ${i};
-done

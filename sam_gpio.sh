@@ -2,7 +2,7 @@
 
 ## auto : lovequee
 ## date : Tue Sep 16 14:24:56 CST 2025
-## goal :
+## goal : one time chang one
 
 let love_fir=0;
 let love_id=0;
@@ -28,4 +28,5 @@ read -p "[4/4] Please input interval time : " love_sleep
 for (( i=${love_fir}; i<= ${love_id} ; i++ ));do
     ${love_exe} -S${i}${love_hl};
     sleep ${love_sleep};
+    ${love_exe} -r;
 done
