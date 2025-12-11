@@ -31,12 +31,7 @@ love_control="ee"
 
 read -p "[4/${love_mylover}] plz input which set(ee ed dd) : " love_control
 
-
 for (( i=${love_min}; i<=${love_max};i++ ));do
-    echo "${love_exe} -${love_control} ${love_port} ${i} -u";
-    ${love_exe} -${love_control} ${love_port} ${i} -u;
-    for (( x=${love_min}; x<=${love_max};x++ ));do
-        ${love_exe} -rn ${love_port} ${x};
-    done
+    echo "${love_exe} -v ${love_port} ${i}";
+    ${love_exe} -v ${love_port} ${i} ;
 done
-
