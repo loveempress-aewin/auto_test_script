@@ -45,10 +45,14 @@ love_control="ee"
 
 read -p "[4/${love_mylover}] plz input which set(ee ed dd) : " love_control
 
+####TODO add sleep (if faster ...maybe not change it)
+
 
 for (( i=${love_min}; i<=${love_max};i++ ));do
     echo "${love_exe} -${love_control} ${love_port} ${i} -nu";
     ${love_exe} -${love_control} ${love_port} ${i} -nu;
+    sleep 1;
+    # ${love_exe} -r ${love_port} ${interval_count_ipmitool_sdr.sh}
     for (( a=${love_min}; a<=${love_max};a++ ));do
         ${love_exe} -r ${love_port} ${a};
     done

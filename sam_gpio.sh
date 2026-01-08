@@ -26,7 +26,10 @@ read -p "[3/4] Please input high or low(h/l) : " love_hl
 read -p "[4/4] Please input interval time : " love_sleep
 
 for (( i=${love_fir}; i<= ${love_id} ; i++ ));do
-    ${love_exe} -S${i}${love_hl};
+    #### ./gpio -S0h
+    # ${love_exe} -S${i}${love_hl};
+    #### ./gpio -0h  --> 1948
+    ${love_exe} -${i}${love_hl};
     sleep ${love_sleep};
     ${love_exe} -r;
 done

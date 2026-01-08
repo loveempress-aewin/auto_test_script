@@ -10,7 +10,6 @@ let love_max=0;
 love_exe="";
 let love_port=1;
 L_filepath=$PWD;
-love_filename=bypass.log
 
 if (( $love_rule > 0 ));then
     love_exe=$1;
@@ -33,6 +32,7 @@ read -p "[3/${love_mylover}] plz input which port(1-4) : " love_port
 
 # love_control="ee"
 
+love_filename=${love_port}_bypass.log
 # read -p "[4/${love_mylover}] plz input which set(ee ed dd) : " love_control
 
 for (( i=${love_min}; i<=${love_max};i++ ));do
