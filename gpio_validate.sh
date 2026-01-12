@@ -4,13 +4,25 @@
 ## goal :
 
 # RAW=head -n 1 gpio_database.csv
-RAW=$(head -n 1 gpio_database.csv)
+current_love=$PWD
+love_dir_put=${PWD}/gpio_love_auto/
+if [[ -f ${love_dir_put}/gpio_database.csv ]];then
+    echo "has gpio_databash.cvs"
+else
+    exit 4444
+fi
+RAW=$(head -n 1 "${love_dir_put}/gpio_database.csv")
+if [[ ${RAW} == '' ]];then
+    echo "RAW is nil........"
+    exit 3
+fi
+read -r RAW < "${love_dir_put}/gpio_database.csv"
+
 
 CMD=$(echo ${RAW} |awk -F',' '{print $1}')
 love_expect=$(echo ${RAW}|awk -F',' '{print $4}')
 
 love_pattern=$(echo ${RAW}|awk -F',' '{print $3}') ##10~13
-
 
 ./gpio ${CMD}
 
@@ -26,7 +38,9 @@ love_validate=$(./gpio -r|grep ${love_pattern}|awk -F': ' '{print $2}'|sed 's#[[
 ### fix output bug....
 # [[ ${love_expect} == ${love_validate} ]] && echo "same" || echo "oppo"
 if [[ ${love_expect} == ${love_validate} ]] ;then
-    cp ./gpio_database.csv ./match_p.csv
+    # cp ./gpio_database.csv ./match_p.csv
+    cp ${love_dir_put}/gpio_database.csv ${love_dir_put}/match_p.csv
 else
-    cp ./gpio_database_oppo.csv ./match_p.csv
+    # cp ./gpio_database_oppo.csv ./match_p.csv
+    cp ${love_dir_put}/gpio_database_oppo.csv ${love_dir_put}/match_p.csv
 fi

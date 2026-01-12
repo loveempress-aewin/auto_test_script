@@ -13,6 +13,22 @@
 # fi
 [ -f "./gpio" ] && echo "File exists." || exit 432;
 
+mkdir gpio_love_auto/
+love_dir_put=${PWD}/gpio_love_auto/
+
+#### reset my love in data !!!
+love_database=${love_dir_put}/gpio_database.csv # w *FILE
+love_oppo_data=${love_dir_put}/gpio_database_oppo.csv # w *FILE
+
+# echo "" > ${love_database} --> error --> is will let file first line to space line...
+# echo "" > ${love_oppo_data}
+if [[ -f ${love_database} ]];then
+    rm ${love_database}
+fi
+if [[ -f ${love_oppo_data} ]];then
+    rm ${love_oppo_data}
+fi
+
 let love_count=0
 # Run the gpio help, filter for the 'Set' lines, and format into a CSV
 # Format: Command,Description,Pin,TargetValue
@@ -35,7 +51,7 @@ let love_count=0
     # Determine what the "Software Value" should be
     [[ "$CMD" == *h ]] && VAL=1 || VAL=0
 
-    echo "$CMD,$DESC,$PIN,$VAL" >> gpio_database.csv
+    echo "$CMD,$DESC,$PIN,$VAL" >> ${love_database}
 done
 
 #### add opposite version
@@ -50,7 +66,7 @@ done
     # Determine what the "Software Value" should be
     [[ "$CMD" == *h ]] && VAL=0 || VAL=1
 
-    echo "$CMD,$DESC,$PIN,$VAL" >> gpio_database_oppo.csv
+    echo "$CMD,$DESC,$PIN,$VAL" >> ${love_oppo_data}
 done
 
 # ./gpio -r
