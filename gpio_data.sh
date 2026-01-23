@@ -13,6 +13,8 @@
 # fi
 [ -f "./gpio" ] && echo "File exists." || exit 432;
 
+# if [[ "$?" == 0 ]];then echo "error gpio"; exit 5 ; fi
+
 mkdir gpio_love_auto/
 love_dir_put=${PWD}/gpio_love_auto/
 
