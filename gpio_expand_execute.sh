@@ -8,6 +8,9 @@
 
 if [[ -x ./gpio ]]; then
     love_exe_gpio=$(realpath ./gpio)
+else
+    echo "ERROR!!!!oooo no have gpio....ERROR!"
+    exit 520;
 fi
 
 #### { ----- reset log file part -----
@@ -24,7 +27,7 @@ love_io_file=${love_dir_put}/bound_io.csv
 #     # echo "TODO"
 #     rm -v ${love_io_file}
 # fi
-love_all_log=${love_dir_put}/gpio_auto_exp_log
+love_all_log=${love_dir_put}/gpio_auto_exp.log
 if [[ -f ${love_all_log} ]];then
     rm ${love_all_log}
 fi
