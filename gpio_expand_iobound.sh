@@ -17,8 +17,9 @@ if [[ -f ${love_io_file} ]];then
     rm ${love_io_file}
 fi
 
-let love_array = 4
-printf "How many groups of GPIO are there (usually 4 groups)[default set 4]?\n"
+let love_array=4
+printf "How many groups of GPIO are there\n"
+printf "(usually 4 groups)[default set 4]?\n"
 read -p "intput ---->" love_array
 
 for ((i=1;i<=${love_array} ; i++ ));do
